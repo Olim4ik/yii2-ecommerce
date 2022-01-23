@@ -27,9 +27,7 @@ AppAsset::register($this);
 		<?php $this->head() ?>
     </head>
 
-    <body id="page-top">
-	<?php $this->beginBody() ?>
-
+    <body id="page-top"
     <!-- Page Wrapper -->
     <div id="wrapper">
 
