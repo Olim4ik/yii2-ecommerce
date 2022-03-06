@@ -15,7 +15,7 @@ use Yii;
  * @property int $quantity
  *
  * @property Orders $order
- * @property Products $product
+ * @property Products $products
  */
 class OrderItems extends \yii\db\ActiveRecord
 {

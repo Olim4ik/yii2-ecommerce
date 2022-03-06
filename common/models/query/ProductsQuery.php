@@ -10,7 +10,7 @@ use yii\db\ActiveQuery;
  *
  * @see \common\models\Products
  */
-class ProductQuery extends ActiveQuery
+class ProductsQuery extends ActiveQuery
 {
     /*public function active()
     {
