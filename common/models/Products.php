@@ -2,7 +2,12 @@
 
 namespace common\models;
 
+use common\models\query\CartItemsQuery;
+use common\models\query\OrderItemsQuery;
+use common\models\query\ProductsQuery;
+use common\models\query\UserQuery;
 use Yii;
+use yii\db\ActiveQuery;
 
 /**
  * This is the model class for table "{{%products}}".
@@ -39,7 +44,7 @@ class Products extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'price', 'status'], 'required'],
+            [['name', 'price', 'status'], 'required'], #, 'image'
             [['description'], 'string'],
             [['price'], 'number'],
             [['status', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],
@@ -59,9 +64,9 @@ class Products extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Name',
             'description' => 'Description',
-            'image' => 'Image',
+            'image' => 'Product Image',
             'price' => 'Price',
-            'status' => 'Status',
+            'status' => 'Published',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'created_by' => 'Created By',
@@ -72,7 +77,7 @@ class Products extends \yii\db\ActiveRecord
     /**
      * Gets query for [[CartItems]].
      *
-     * @return \yii\db\ActiveQuery|\common\models\query\CartItemsQuery
+     * @return ActiveQuery
      */
     public function getCartItems()
     {
@@ -82,7 +87,7 @@ class Products extends \yii\db\ActiveRecord
     /**
      * Gets query for [[CreatedBy]].
      *
-     * @return \yii\db\ActiveQuery|\common\models\query\UserQuery
+     * @return ActiveQuery
      */
     public function getCreatedBy()
     {
@@ -92,7 +97,7 @@ class Products extends \yii\db\ActiveRecord
     /**
      * Gets query for [[OrderItems]].
      *
-     * @return \yii\db\ActiveQuery|\common\models\query\OrderItemsQuery
+     * @return ActiveQuery
      */
     public function getOrderItems()
     {
@@ -102,7 +107,7 @@ class Products extends \yii\db\ActiveRecord
     /**
      * Gets query for [[UpdatedBy]].
      *
-     * @return \yii\db\ActiveQuery|\common\models\query\UserQuery
+     * @return ActiveQuery
      */
     public function getUpdatedBy()
     {
@@ -111,10 +116,10 @@ class Products extends \yii\db\ActiveRecord
 
     /**
      * {@inheritdoc}
-     * @return \common\models\query\ProductsQuery the active query used by this AR class.
+     * @return ProductsQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new \common\models\query\ProductsQuery(get_called_class());
+        return new ProductsQuery(static::class);
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use dosamigos\ckeditor\CKEditor;
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm; # instead of widgets we used Bootstrap4
 
@@ -14,13 +15,36 @@ use yii\bootstrap4\ActiveForm; # instead of widgets we used Bootstrap4
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'description')->widget(CKEditor::class, [
+	    'options' => ['rows' => 6],
+	    'preset' => 'basic'
+    ]) ?>
 
-    <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?>
+<!--    <div class="input-group mb-3">-->
+<!--        <div class="custom-file">-->
+<!--            <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">-->
+<!--            <label class="custom-file-label" for="inputGroupFile01">Choose Image For Product</label>-->
+<!--        </div>-->
+<!--    </div>-->
 
-    <?= $form->field($model, 'price')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'image', [
+            'template' => '
+                    <div class="custom-file">
+                        {input}
+                        {label}
+                        {error}
+                    </div>
+            ',
+        'inputOptions' => ['class' => 'custom-file-input'],
+        'labelOptions' => ['class' => 'custom-file-label']
+    ])->textInput(['type' => 'file']) ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
+    <?= $form->field($model, 'price')->textInput([
+        'maxlength' => true,
+        'type' => 'number'
+    ]) ?>
+
+    <?= $form->field($model, 'status')->checkbox() ?>
 
         <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
