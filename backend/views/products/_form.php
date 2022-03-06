@@ -11,7 +11,9 @@ use yii\bootstrap4\ActiveForm; # instead of widgets we used Bootstrap4
 
 <div class="products-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+            'options' => ['enctype' => 'multipart/form-data']
+    ]); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
@@ -27,7 +29,7 @@ use yii\bootstrap4\ActiveForm; # instead of widgets we used Bootstrap4
 <!--        </div>-->
 <!--    </div>-->
 
-    <?= $form->field($model, 'image', [
+    <?= $form->field($model, 'imageFile', [
             'template' => '
                     <div class="custom-file">
                         {input}

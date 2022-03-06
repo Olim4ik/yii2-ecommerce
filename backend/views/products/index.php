@@ -30,15 +30,43 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => SerialColumn::class],
 
-            'id',
-            'name',
-            'description:ntext',
-            'image',
-            'price',
-            //'status',
-            //'created_at',
-            //'updated_at',
-            //'created_by',
+            [
+                'attribute' => 'image',
+                'content' => static function($model) {
+                    /** @var $model Products */
+                    return Html::img($model->getImageUrl(), ['width' => '100px']);
+                },
+
+            ],
+	        'name',
+	        [
+		        'attribute' => 'price',
+
+		        'format' => [
+			        'currency',
+			        '$',
+		        ],
+	        ],
+	        [
+                'attribute' => 'status',
+                'content' => static function($model) {
+	                /** @var $model Products */
+                    return Html::tag('span', $model->status ? 'Active' : 'Draft', [
+                            'class' => $model->status ? 'badge badge-success' : 'badge badge-danger'
+                    ]);
+                }
+            ],
+            [
+                'attribute' => 'created_at',
+                'format' => ['datetime'],
+                'contentOptions' => ['style' => 'white-space: nowrap']
+            ],
+	        [
+		        'attribute' => 'updated_at',
+		        'format' => ['datetime'],
+		        'contentOptions' => ['style' => 'white-space: nowrap']
+	        ],
+	        //'created_by',
             //'updated_by',
             [
                 'class' => ActionColumn::className(),

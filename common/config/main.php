@@ -12,5 +12,9 @@ return [
         'cache' => [
             'class' => FileCache::class,
         ],
+	    'formatter' => [
+			'datetimeFormat' => 'php:d/m/Y H:i',
+		    'currencyCode' => '$'
+	    ]
     ],
 ];
