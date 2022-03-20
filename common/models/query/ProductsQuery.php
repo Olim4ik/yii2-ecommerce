@@ -34,4 +34,9 @@ class ProductsQuery extends ActiveQuery
     {
         return parent::one($db);
     }
+
+	public function published()
+	{
+		return $this->andWhere(['status' => Products::STATUS_PUBLISHED]);
+	}
 }

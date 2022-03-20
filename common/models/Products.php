@@ -36,6 +36,10 @@ use yii\web\UploadedFile;
  */
 class Products extends \yii\db\ActiveRecord
 {
+	const STATUS_PUBLISHED = 1;
+	const NOT_PUBLISHED = 0;
+
+
 	/**
 	 * @var UploadedFile
 	 */
@@ -172,5 +176,10 @@ class Products extends \yii\db\ActiveRecord
 			return Yii::$app->params['frontendUrl'] . '/storage/' . $this->image;
 		}
 		return Yii::$app->params['frontendUrl'].'/img/no_img.svg';
+	}
+
+	public function getShortDescription()
+	{
+		return \yii\helpers\StringHelper::truncateWords(strip_tags($this->description), 30);
 	}
 }
