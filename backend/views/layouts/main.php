@@ -68,11 +68,11 @@ AppAsset::register($this);
             </li>
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Product Categories</span></a>
-            </li>
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" href="tables.html">-->
+<!--                    <i class="fas fa-fw fa-table"></i>-->
+<!--                    <span>Product Categories</span></a>-->
+<!--            </li>-->
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -295,20 +295,20 @@ AppAsset::register($this);
                 <!-- End of Topbar -->
 
                 <div class="p-4">
-	                <?= $content ?>
+	                <?= $content #TODO | down footer ?>
                 </div>
 
             </div>
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
-                    </div>
-                </div>
-            </footer>
+<!--            <footer class="sticky-footer bg-white">-->
+<!--                <div class="container my-auto">-->
+<!--                    <div class="copyright text-center my-auto">-->
+<!--                        <span>Copyright &copy; Your Website 2021</span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </footer>-->
             <!-- End of Footer -->
 
         </div>
